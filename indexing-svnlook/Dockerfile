@@ -20,8 +20,9 @@ RUN depsRuntime=' \
 	&& mkdir -p usr/src/repos-indexing-standalone \
 	&& tar -xvf repos-indexing-standalone-$reposIndexingStandaloneVersion.tar.gz -C usr/src/repos-indexing-standalone --strip-components=1 \
 	&& rm repos-indexing-* \
-  && cd usr/src/repos-indexing-standalone \
+  && cd usr/src/repos-indexing-standalone/ \
   && mvn package \
+  && cd ../../../ \
   && mv usr/src/repos-indexing-standalone/target/repos-indexing-standalone-jar-with-dependencies.jar opt/repos-indexing-standalone-jar-with-dependencies.jar \
   && rm usr/src/repos-indexing-standalone -Rf \
   && rm ~/.m2 -Rf \
