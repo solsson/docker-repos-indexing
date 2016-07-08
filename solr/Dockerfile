@@ -13,6 +13,8 @@ RUN cd server/solr \
   && tar xvzf cms-indexing-xml.tar.gz --strip-components=10 cms-indexing-xml-$xmlIndexingVersion/src/main/resources/se/simonsoft/cms/indexing/xml/solr/reposxml \
   && rm cms-indexing-xml.tar.gz
 
-VOLUME /solrdata
 ADD repositem server/solr/repositem
 ADD reposxml server/solr/reposxml
+USER root
+RUN mkdir /solrdata && chown solr /solrdata
+USER solr
