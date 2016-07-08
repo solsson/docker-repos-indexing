@@ -23,7 +23,9 @@ RUN depsRuntime=' \
   && cd usr/src/repos-indexing-standalone \
   && mvn package \
   && mv usr/src/repos-indexing-standalone/target/repos-indexing-standalone-jar-with-dependencies.jar opt/repos-indexing-standalone-jar-with-dependencies.jar \
-	&& apt-get purge -y --auto-remove $depsBuild
+  && rm usr/src/repos-indexing-standalone -Rf \
+  && rm ~/.m2 -Rf \
+  && apt-get purge -y --auto-remove $depsBuild
 
 RUN (echo '#!/usr/bin/java -jar'; cat /opt/repos-indexing-standalone-jar-with-dependencies.jar) > /usr/local/bin/repos-indexing \
   && chmod u+x /usr/local/bin/repos-indexing
