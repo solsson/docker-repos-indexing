@@ -1,0 +1,25 @@
+version: '2'
+services:
+  solr:
+    build: ../solr
+    ports:
+     - "8983:8983"
+    volumes:
+      - ./data/solr:/solrdata
+  svn:
+    build: ./svn
+    ports:
+     - "80:80"
+    volumes:
+     - ./data/svn:/svn
+    # unless you already have repositories in ./data/svn do something like: docker-compose run svn repocreate test1
+  indexing:
+    build: ../indexing-svnlook
+    volumes:
+     - ./data/svn:/svn
+    links:
+      - svn:svn
+      - solr:solr
+    #command: [ "-d", "/svn", "-e", "http://svn/svn/", "-s", "http://solr/" ]
+    # Can't command be combined with Dockerfile's entrypoint?
+    entrypoint: [ repos-indexing, "-d", "/svn", "-e", "http://svn/svn/", "-s", "http://solr:8983/solr/" ]
