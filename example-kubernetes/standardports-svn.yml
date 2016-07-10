@@ -1,13 +1,10 @@
 # https://github.com/kubernetes/contrib/tree/master/for-demos/proxy-to-service
 # "Pods can choose any port or host port, and are not limited in the same way Services are"
 apiVersion: extensions/v1beta1
-kind: Deployment
+kind: DaemonSet
 metadata:
   name: standardports
-  # labels applied automatically from pod template
 spec:
-  replicas: 1
-  # selector applied automatically from pod template
   template:
     metadata:
       labels:
