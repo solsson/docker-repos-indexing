@@ -1,16 +1,24 @@
 # https://github.com/kubernetes/contrib/tree/master/for-demos/proxy-to-service
 # "Pods can choose any port or host port, and are not limited in the same way Services are"
-apiVersion: v1
-kind: Pod
+apiVersion: extensions/v1beta1
+kind: Deployment
 metadata:
   name: standardports
+  # labels applied automatically from pod template
 spec:
-  containers:
-  - name: proxy-tcp
-    image: gcr.io/google_containers/proxy-to-service:v2
-    args: [ "tcp", "80", "svn.default" ]
-    ports:
-    - name: tcp
-      protocol: TCP
-      containerPort: 80
-      hostPort: 80
+  replicas: 1
+  # selector applied automatically from pod template
+  template:
+    metadata:
+      labels:
+        app: standardports
+    spec:
+      containers:
+      - name: proxy-tcp
+        image: gcr.io/google_containers/proxy-to-service:v2
+        args: [ "tcp", "80", "svn.default" ]
+        ports:
+        - name: tcp
+          protocol: TCP
+          containerPort: 80
+          hostPort: 80
