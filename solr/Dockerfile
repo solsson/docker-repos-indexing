@@ -15,4 +15,8 @@ RUN cd server/solr \
 
 ADD repositem server/solr/repositem
 ADD reposxml server/solr/reposxml
-#VOLUME /opt/solr/data
+
+USER root
+RUN mkdir /solrdata && chgrp $SOLR_USER /solrdata && chmod g+w /solrdata
+USER $SOLR_USER
+VOLUME /solrdata
