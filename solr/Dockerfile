@@ -15,6 +15,4 @@ RUN cd server/solr \
 
 ADD repositem server/solr/repositem
 ADD reposxml server/solr/reposxml
-USER root
-RUN mkdir /solrdata && chown solr /solrdata
-USER solr
+#VOLUME /opt/solr/data
