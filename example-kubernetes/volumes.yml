@@ -1,0 +1,46 @@
+# TODO this is likely defined in a separate namespace, for persistent storage
+# It probably also differs between test (minikube etc.) and other stages
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv1
+  labels:
+    site: some-other-site
+    persist: svn
+spec:
+  accessModes:
+  - ReadWriteOnce
+  capacity:
+    storage: 1Gi
+  hostPath:
+    path: /tmp/repos-indexing_svn_wedontwantthistobebound
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv2
+  labels:
+    site: repos-indexing-example
+    persist: svn
+spec:
+  accessModes:
+  - ReadWriteOnce
+  capacity:
+    storage: 1Gi
+  hostPath:
+    path: /tmp/repos-indexing_svn
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv3
+  labels:
+    id: test3
+spec:
+  accessModes:
+  - ReadWriteOnce
+  capacity:
+    storage: 1Gi
+  hostPath:
+    path: /tmp/repos-indexing_svn_wedontwantthistobebound

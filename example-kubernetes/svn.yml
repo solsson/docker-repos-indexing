@@ -11,11 +11,19 @@ spec:
       labels:
         app: svn
     spec:
+      volumes:
+      - name: svn
+        persistentVolumeClaim:
+          claimName: svn
       containers:
       - name: svn
         image: solsson/svn-httpd:1.8.16
         ports:
         - containerPort: 80
+        volumeMounts:
+        - name: svn
+          mountPath: /svn
+      # TODO rweb container
       - name: indexing
         image: solsson/repos-indexing-svnlook@sha256:52321e6196324f188bd18da8ee31a0a388b528bbfe74c8899ae995391d727c82
         args:
@@ -25,4 +33,6 @@ spec:
         - http://svn/svn/
         - -s
         - http://solr:8983/solr/
-      #TODO- name: rweb
+        volumeMounts:
+        - name: svn
+          mountPath: /svn
