@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: svn
 spec:
-  type: LoadBalancer
+  type: NodePort
   selector:
     app: svn
   ports:
