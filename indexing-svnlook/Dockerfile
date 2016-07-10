@@ -28,6 +28,4 @@ RUN depsRuntime=' \
   && rm ~/.m2 -Rf \
   && apt-get purge -y --auto-remove $depsBuild
 
-RUN (echo '#!/usr/bin/java -jar'; cat /opt/repos-indexing-standalone-jar-with-dependencies.jar) > /usr/local/bin/repos-indexing \
-  && chmod u+x /usr/local/bin/repos-indexing
-ENTRYPOINT [ "repos-indexing" ]
+ENTRYPOINT [ "java", "-jar", "/opt/repos-indexing-standalone-jar-with-dependencies.jar" ]
