@@ -20,6 +20,10 @@ services:
     links:
       - svn:svn
       - solr:solr
-    #command: [ "-d", "/svn", "-e", "http://svn/svn/", "-s", "http://solr/" ]
-    # Can't command be combined with Dockerfile's entrypoint?
-    entrypoint: [ repos-indexing, "-d", "/svn", "-e", "http://svn/svn/", "-s", "http://solr:8983/solr/" ]
+    command:
+      - -d
+      - /svn
+      - -e
+      - http://svn/svn/
+      - -s
+      - http://solr:8983/solr/
