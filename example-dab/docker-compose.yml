@@ -4,8 +4,10 @@ services:
     build: ../solr
     ports:
      - "8983:8983"
-    volumes:
-      - ./data/solr:/solrdata
+    # repos-indexing is designed to re-index as needed; no need to make solr data persistent
+    #volumes:
+    #  # data dir should be group-writable
+    #  - ./data/solr:/solrdata
   svn:
     build: ./svn
     ports:
