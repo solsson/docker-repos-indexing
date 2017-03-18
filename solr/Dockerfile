@@ -5,7 +5,7 @@ ENV xmlIndexingVersion=bc0c2282894bf36dbad609fdaa0534ae3ba298c5
 
 RUN cd server/solr \
   && curl -SL https://github.com/Reposoft/repos-indexing/archive/$reposIndexingVersion.tar.gz -o repos-indexing.tar.gz \
-  && tar xvzf repos-indexing.tar.gz --strip-components=8 repos-indexing-$xmlIndexingVersion/src/main/resources/se/repos/indexing/solr/repositem \
+  && tar xvzf repos-indexing.tar.gz --strip-components=8 repos-indexing-$reposIndexingVersion/src/main/resources/se/repos/indexing/solr/repositem \
   && rm repos-indexing.tar.gz
 
 RUN cd server/solr \
