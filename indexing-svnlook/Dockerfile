@@ -1,8 +1,8 @@
 FROM openjdk:8u121-jre@sha256:7c6b47748210f14f7905ce4e51dae53043a8535e119a4dfed8ae81766e5b03ec
 
-ENV reposIndexingStandaloneVersion=v1.0.0
+ENV reposIndexingStandaloneVersion=v1.1.2
 ENV reposIndexingStandaloneSourceUrl=https://github.com/Reposoft/repos-indexing-standalone/archive/$reposIndexingStandaloneVersion.tar.gz
-ENV reposIndexingStandaloneSourceSha1=a1054e0460b660f89a08b8c7fbbdd0a2ad46293a
+ENV reposIndexingStandaloneSourceSha1=ffa9e2bbd76463fc7a201fcfdb7279a9bb1fe0e6
 
 RUN depsRuntime=' \
 	' \
