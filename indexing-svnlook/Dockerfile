@@ -1,5 +1,4 @@
-# Same base as https://hub.docker.com/_/solr/ 6.1
-FROM java:openjdk-8-jre
+FROM openjdk:8u121-jre@sha256:7c6b47748210f14f7905ce4e51dae53043a8535e119a4dfed8ae81766e5b03ec
 
 ENV reposIndexingStandaloneVersion=v1.0.0
 ENV reposIndexingStandaloneSourceUrl=https://github.com/Reposoft/repos-indexing-standalone/archive/$reposIndexingStandaloneVersion.tar.gz
